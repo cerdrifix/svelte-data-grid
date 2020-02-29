@@ -1,5 +1,5 @@
 {
-  "name": "@sveltejs/svelte-data-grid",
+  "name": "svelte-data-grid",
   "version": "0.1.0",
   "description": "A smart Svelte Data Grid with filtering and ordering",
   "main": "src/index.js",
