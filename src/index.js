@@ -1,0 +1,1 @@
+export {default as SvDataGrid} from './SvDataGrid.svelte';

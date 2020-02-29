@@ -1,0 +1,12 @@
+{
+  "name": "svelte-data-grid",
+  "version": "0.1.0",
+  "description": "A smart Svelte Data Grid with filtering and ordering",
+  "main": "src/index.js",
+  "svelte": "src/index.js",
+  "author": "Davide Ceretto @cerdrifix",
+  "repository": "cerdrifix/svelte-data-grid",
+  "peerDependencies": {
+    "svelte": "3.x"
+  }
+}
