@@ -5,7 +5,10 @@
 	import moment from 'moment';
 	import clone from 'lodash.clone';
 	
-	export let config
+	export let config;
+	export let refresh = (data) => {
+		setData(data);
+	};
 	let rows = [], filteredRows = [];
 	
 	async function fetchData() {
@@ -18,7 +21,18 @@
 		console.log("Fetched " + rows.length + " rows in " + (t2 - t1) + " ms");
 	}
 	
-	onMount(fetchData);
+	onMount(() => {
+		if(!!config.data)
+			setData(config.data);
+
+		if(!!config.dataURL)
+			fetchData();
+	});
+
+	function setData(data) {
+		rows = clone(data);
+		filteredRows = clone(data);
+	}
 </script>
 
 <style>
