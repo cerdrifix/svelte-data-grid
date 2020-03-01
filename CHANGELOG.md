@@ -1,3 +1,10 @@
+# 0.3.0
+
+Improved fetch management. README still missing
+
+# 0.2.0
+
+Minor fixes
 
 # 0.1.0
 
