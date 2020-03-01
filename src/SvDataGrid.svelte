@@ -6,7 +6,10 @@
 	import clone from 'lodash.clone';
 	
 	export let config;
-	export let refresh = (data) => {
+	export function cleanData() {
+		setData([]);
+	}
+	export function refreshData(data) {
 		setData(data);
 	};
 	let rows = [], filteredRows = [];
