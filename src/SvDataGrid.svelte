@@ -72,9 +72,11 @@
 	onMount(refreshData);
 </script>
 
+<svelte:head>
+	<script src="https://kit.fontawesome.com/629d4c6a14.js" crossorigin="anonymous"></script>
+</svelte:head>
+
 <style>
-	@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-	
 	.dg-table-container {
 		width: 100%;
 		color: #333;

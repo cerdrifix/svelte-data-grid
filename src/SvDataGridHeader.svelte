@@ -54,13 +54,13 @@
 		vertical-align: middle;
 	}
 	
-	.material-icons {
-    letter-spacing: -12px;
+	.fa {
+    letter-spacing: -5px;
     font-size: 18px;
     vertical-align: sub;
 	}
 	
-	.material-icons.disabled {
+	.fa.disabled {
 		color: #aaa;
 	}
 </style>
@@ -77,8 +77,8 @@
 			{description}
 			{#if !!dataField && lastSortField == dataField}
 			<span>
-				<i class="material-icons" class:disabled="{lastSortOrder === 'desc'}">arrow_drop_up</i>
-				<i class="material-icons" class:disabled="{lastSortOrder === 'asc'}">arrow_drop_down</i>
+				<i class="fa fa-angle-up" class:disabled="{lastSortOrder === 'desc'}">&nbsp;</i>
+				<i class="fa fa-angle-down" class:disabled="{lastSortOrder === 'asc'}">&nbsp;</i>
 			</span>
 			{/if}
 			{#if !!dataField && !!filter}
