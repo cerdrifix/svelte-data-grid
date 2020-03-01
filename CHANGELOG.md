@@ -9,6 +9,9 @@ Exporting two functions:
 - cleanData(): used to reset data to []
 - refreshData(object | promise | function): used to refresh grid data. Promises or functions must return json array. Object must be json array. If nothing is passed then fetches data using config.dataURL;
 
+### 0.3.1
+Fixed "waiting for data" await
+
 ## 0.2.0
 
 Minor fixes

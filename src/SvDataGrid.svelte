@@ -12,19 +12,19 @@
 	export function cleanData() {
 		setData([]);
 	}
-	export async function refreshData(o) {
+	export function refreshData(o) {
 		switch(getObjectType(o)) {
 			case "promise": {
 				console.log("called as promise")
 				promise = o;
-				setData(await promise.then(async (response) => {
+				setData(promise.then(async (response) => {
 					setData(await response.json())
 				}));
 				break;
 			}
 			case "function": {	
 				console.log("called as function")
-				promise = await callServer(o);
+				promise = callServer(o);
 				break;
 			}
 			case "object": {
@@ -34,7 +34,7 @@
 			default: {
 				console.log("called as ", getObjectType(o))
 				if(!config.dataURL) return;
-				promise = await callServer(() => fetch(config.dataURL));
+				promise = callServer(() => fetch(config.dataURL));
 			}
 		}
 	}
