@@ -6,36 +6,70 @@
 	import clone from 'lodash.clone';
 	
 	export let config;
+
+	let promise, rows = [], filteredRows = [];
+
 	export function cleanData() {
 		setData([]);
 	}
-	export function refreshData(data) {
-		setData(data);
-	};
-	let rows = [], filteredRows = [];
-	
-	async function fetchData() {
-		console.log("Fetching data...")
+	export async function refreshData(o) {
+		switch(getObjectType(o)) {
+			case "promise": {
+				console.log("called as promise")
+				promise = o;
+				setData(await promise.then(async (response) => {
+					setData(await response.json())
+				}));
+				break;
+			}
+			case "function": {	
+				console.log("called as function")
+				promise = await callServer(o);
+				break;
+			}
+			case "object": {
+				console.log("called as object")
+				setData(o);
+			}
+			default: {
+				console.log("called as ", getObjectType(o))
+				if(!config.dataURL) return;
+				promise = await callServer(() => fetch(config.dataURL));
+			}
+		}
+	}
+
+	function getObjectType(obj) {
+		if(!obj) return undefined;
+		if(typeof obj.then === "function") return "promise";
+		return typeof obj;
+	}
+
+	async function callServer(fn) {
+		if(!fn) return;
+		
+		console.log("Fetching data...");
+
 		let t1 = (new Date()).getTime();
-		const res = await fetch(config.dataURL);
-    rows = await res.json();
-		filteredRows = clone(rows);
+		let data = await fn();
 		let t2 = (new Date()).getTime();
-		console.log("Fetched " + rows.length + " rows in " + (t2 - t1) + " ms");
+		
+		if(!!data) {
+			setData(await data.json());
+			console.log(`Fetched ${rows.length} rows in ${t2 - t1} millis`);
+		} else {
+			console.error("Error fetching data...");
+		}
 	}
 	
-	onMount(() => {
-		if(!!config.data)
-			setData(config.data);
-
-		if(!!config.dataURL)
-			fetchData();
-	});
-
 	function setData(data) {
+		if(!data)
+			return;
 		rows = clone(data);
 		filteredRows = clone(data);
 	}
+	
+	onMount(refreshData);
 </script>
 
 <style>
@@ -49,5 +83,11 @@
 </style>
 <table class="dg-table-container table">
 		<DataGridHeader config={config} bind:filteredRows={filteredRows} rows={rows} />
-		<DataGridBody config={config} bind:filteredRows={filteredRows} />
+		{#await promise}
+			<tr><td colspan={config.columns.length}>Waiting for data...</td></tr>
+		{:then rows}
+			<DataGridBody config={config} bind:filteredRows={filteredRows} />
+		{:catch error}
+			<tr><td colspan={config.columns.length}>Error retrieving data</td></tr>
+		{/await}
 </table>
