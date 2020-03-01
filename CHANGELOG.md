@@ -1,12 +1,19 @@
-# 0.3.0
+# Changelogs
+
+## 0.3.0
 
 Improved fetch management. README still missing
 
-# 0.2.0
+Exporting two functions:
+
+- cleanData(): used to reset data to []
+- refreshData(object | promise | function): used to refresh grid data. Promises or functions must return json array. Object must be json array. If nothing is passed then fetches data using config.dataURL;
+
+## 0.2.0
 
 Minor fixes
 
-# 0.1.0
+## 0.1.0
 
 First release. Trying to push it as a library
 
