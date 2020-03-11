@@ -1,5 +1,10 @@
 <script>
+
+	import { createEventDispatcher } from 'svelte';
 	import moment from 'moment';
+	
+	const dispatch = createEventDispatcher();
+
 	export let filteredRows = [], config;
 	
 	function dataFormatDefaultFunc(value, type) {
@@ -16,9 +21,6 @@
 		}
 		return returnValue;
 	}
-
-	
-	const dispatch = createEventDispatcher();
 
 	function rowClicked(row, index) {
 		dispatch('rowClicked', {
