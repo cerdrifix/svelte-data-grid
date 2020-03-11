@@ -16,6 +16,16 @@
 		}
 		return returnValue;
 	}
+
+	
+	const dispatch = createEventDispatcher();
+
+	function rowClicked(row, index) {
+		dispatch('rowClicked', {
+			row,
+			index
+		});
+	}
 </script>
 
 <style>
@@ -27,7 +37,7 @@
 
 <tbody>
 	{#each filteredRows as row, ridx}
-	<tr>
+	<tr on:click={rowClicked(row, ridx)}>
 		{#each config.columns.filter(c => !!c.dataField) as {dataField, type, hidden, width, dataFormat, dataAlign}, cidx}
 		<td style="{!!width ? `width:${width}px;min-width:${width}px;` : ''}
 							 {!!hidden ? `display:none;`: ''}

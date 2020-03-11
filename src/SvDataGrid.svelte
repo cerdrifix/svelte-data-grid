@@ -88,7 +88,7 @@
 		{#await promise}
 			<tr><td colspan={config.columns.length}>Waiting for data...</td></tr>
 		{:then rows}
-			<DataGridBody config={config} bind:filteredRows={filteredRows} />
+			<DataGridBody config={config} bind:filteredRows={filteredRows} on:rowClicked />
 		{:catch error}
 			<tr><td colspan={config.columns.length}>Error retrieving data</td></tr>
 		{/await}

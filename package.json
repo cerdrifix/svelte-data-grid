@@ -1,6 +1,6 @@
 {
   "name": "sv-data-grid",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A smart Svelte Data Grid with filtering and ordering",
   "main": "src/SvDataGrid.svelte",
   "svelte": "src/SvDataGrid.svelte",

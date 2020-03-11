@@ -1,5 +1,9 @@
 # Changelogs
 
+## 0.5.0
+
+Row click management
+
 ## 0.3.0
 
 Improved fetch management. README still missing
