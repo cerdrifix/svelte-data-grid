@@ -4,16 +4,17 @@ import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
+const pkg = require('./package.json');
+
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/main.js',
-	output: {
-		sourcemap: true,
-		format: 'iife',
-		name: 'app',
-		file: 'public/build/bundle.js'
-	},
+	input: 'src/SvDataGrid.svelte',
+	output: [
+		{ file: pkg.module, 'format': 'it' },
+		{ file: pkg.main, 'format': 'umd', name: 'SvDataGrid' }
+	],
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production

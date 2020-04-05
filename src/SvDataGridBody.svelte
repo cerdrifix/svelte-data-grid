@@ -28,6 +28,7 @@
 			index
 		});
 	}
+	
 </script>
 
 <style>

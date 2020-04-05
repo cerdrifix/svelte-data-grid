@@ -1,1 +1,2 @@
-export {default as SvDataGrid} from './SvDataGrid.svelte';
+import SvDataGrid from './SvDataGrid.svelte';
+export default SvDataGrid;

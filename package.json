@@ -1,9 +1,14 @@
 {
   "name": "sv-data-grid",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "A smart Svelte Data Grid with filtering and ordering",
-  "main": "src/SvDataGrid.svelte",
-  "svelte": "src/SvDataGrid.svelte",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "svelte": "src/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
   "author": "Davide Ceretto @cerdrifix",
   "repository": "cerdrifix/svelte-data-grid",
   "peerDependencies": {
@@ -12,13 +17,14 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.0",
     "@rollup/plugin-node-resolve": "^7.0.0",
-    "rollup": "^1.20.0",
-    "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^5.1.2",
-    "svelte": "^3.0.0",
+    "lodash.clone": "latest",
     "moment": "latest",
-    "lodash.clone": "latest"
+    "rollup": "^1.32.1",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "rollup-plugin-terser": "^5.1.2",
+    "svelte": "^3.20.1"
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
