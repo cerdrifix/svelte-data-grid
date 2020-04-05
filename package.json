@@ -1,6 +1,6 @@
 {
   "name": "sv-data-grid",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A smart Svelte Data Grid with filtering and ordering",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -27,7 +27,10 @@
     "svelte": "^3.20.1"
   },
   "dependencies": {
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "moment": "latest",
+    "lodash.clone": "latest",
+    "svelte": "^3.20.1"
   },
   "license": "GPL-3.0-or-later"
 }
